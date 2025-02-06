@@ -3,14 +3,28 @@ import pygame
 from constants import *
 from helpers import screen
 
-
 class Post:
     """
     A class used to represent post on Nitzagram
     """
-    def __init__(self): #TODO: add parameters
-        #TODO: write me!
-        pass
+    def __init__(self, username, location, description):
+        self.username = username
+        self.location = location
+        self.description = description
+        self.likes_counter = 0
+        self.comments = []
+        self.comments_display_index = 0
+
+
+
+    def add_like(self):
+        self.likes_counter += 1
+
+    def add_comment(self, text):
+        comment = Comment(text)
+        self.comments.append(comment)
+
+
 
     def display(self):
         """
@@ -19,9 +33,20 @@ class Post:
 
         :return: None
         """
-        # TODO: write me!
-        pass
+        font = pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE)
 
+        username = font.render(self.username, True,BLACK)
+        screen.blit(username, [USER_NAME_X_POS, USER_NAME_Y_POS])
+
+        location = font.render(self.location, True, BLACK)
+        screen.blit(location, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
+
+        likes_count = font.render(str(self.likes_counter), True, GREY)
+        screen.blit(likes_count, [LIKE_TEXT_X_POS, LIKE_TEXT_Y_POS])
+
+        #DESCRIPTION TODO
+        
+        self.display_comments()
 
     def display_comments(self):
         """

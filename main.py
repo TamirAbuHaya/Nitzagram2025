@@ -1,6 +1,7 @@
 import pygame
 from helpers import screen
 from constants import WINDOW_WIDTH, WINDOW_HEIGHT, BLACK
+from classes import ImagePost, Post, Comment, Button
 
 
 def main():
@@ -18,6 +19,7 @@ def main():
                                         (WINDOW_WIDTH, WINDOW_HEIGHT))
 
     # TODO: add a post here
+    # noa_post = ImagePost.ImagePost("Nevo", "This is a photo of Noa", "Israel", "Images/noa.jpg")
 
     running = True
     while running:
